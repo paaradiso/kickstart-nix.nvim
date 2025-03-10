@@ -4,15 +4,16 @@ with final.pkgs.lib; let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin = src: pname:
-    pkgs.vimUtils.buildVimPlugin {
-      inherit pname src;
-      version = src.lastModifiedDate;
-    };
+  # mkNvimPlugin = src: pname:
+  #   pkgs.vimUtils.buildVimPlugin {
+  #     inherit pname src;
+  #     version = src.lastModifiedDate;
+  #   };
 
   base16Config = if base16Theme != null then ''
     -- Configure mini.base16 with Stylix theme
     require('base16-colorscheme').setup({
+      test   = "set",
       base00 = "${base16Theme.base00}",
       base01 = "${base16Theme.base01}",
       base02 = "${base16Theme.base02}",
