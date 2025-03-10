@@ -5,6 +5,7 @@
   stdenv,
   # Set by the overlay to ensure we use a compatible version of `wrapNeovimUnstable`
   pkgs-wrapNeovim ? pkgs,
+  base16Config ? ""
 }:
 with lib;
   {
@@ -67,6 +68,9 @@ with lib;
     neovimConfig = pkgs-wrapNeovim.neovimUtils.makeNeovimConfig {
       inherit extraPython3Packages withPython3 withRuby withNodeJs viAlias vimAlias;
       plugins = normalizedPlugins;
+      customRC = ''
+        ${base16Config}
+      '';
     };
 
     # This uses the ignoreConfigRegexes list to filter
