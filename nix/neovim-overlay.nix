@@ -12,31 +12,23 @@ with final.pkgs.lib; let
 
   base16Config = if base16Theme != null then ''
     -- Configure mini.base16 with Stylix theme
-    require('mini.base16').setup({
-      palette = {
-        base00 = "${base16Theme.base00}",
-        base01 = "${base16Theme.base01}",
-        base02 = "${base16Theme.base02}",
-        base03 = "${base16Theme.base03}",
-        base04 = "${base16Theme.base04}",
-        base05 = "${base16Theme.base05}",
-        base06 = "${base16Theme.base06}",
-        base07 = "${base16Theme.base07}",
-        base08 = "${base16Theme.base08}",
-        base09 = "${base16Theme.base09}",
-        base0A = "${base16Theme.base0A}",
-        base0B = "${base16Theme.base0B}",
-        base0C = "${base16Theme.base0C}",
-        base0D = "${base16Theme.base0D}",
-        base0E = "${base16Theme.base0E}",
-        base0F = "${base16Theme.base0F}",
-      },
-      use_cterm = true,
-      plugins = {
-        default = true,
-        ['echasnovski/mini.nvim'] = true,
-        -- Add any other plugin support you want here
-      },
+    require('base16-colorscheme').setup({
+      base00 = "${base16Theme.base00}",
+      base01 = "${base16Theme.base01}",
+      base02 = "${base16Theme.base02}",
+      base03 = "${base16Theme.base03}",
+      base04 = "${base16Theme.base04}",
+      base05 = "${base16Theme.base05}",
+      base06 = "${base16Theme.base06}",
+      base07 = "${base16Theme.base07}",
+      base08 = "${base16Theme.base08}",
+      base09 = "${base16Theme.base09}",
+      base0A = "${base16Theme.base0A}",
+      base0B = "${base16Theme.base0B}",
+      base0C = "${base16Theme.base0C}",
+      base0D = "${base16Theme.base0D}",
+      base0E = "${base16Theme.base0E}",
+      base0F = "${base16Theme.base0F}",
     })
   '' else "";
 
@@ -112,7 +104,7 @@ with final.pkgs.lib; let
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
     # my own plugins
-    mini-base16 # enable stylix theming support
+    base16-nvim # enable stylix theming support
   ];
 
   extraPackages = with pkgs; [
